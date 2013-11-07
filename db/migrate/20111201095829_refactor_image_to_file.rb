@@ -8,5 +8,6 @@ class RefactorImageToFile < ActiveRecord::Migration
     rename_column :rich_rich_files, :image_updated_at, :rich_file_updated_at
 
     add_column :rich_rich_files, :simplified_type, :string, :default => "file"
+    add_column :rich_rich_files, :file_title, :string
   end
 end

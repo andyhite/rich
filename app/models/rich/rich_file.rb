@@ -5,10 +5,12 @@ require 'kaminari'
 module Rich
   class RichFile < ActiveRecord::Base
 
+    attr_accessible :rich_file_file_name, :rich_file_content_type, :rich_file_file_size, :rich_file_updated_at, :owner_type, :owner_id, :uri_cache, :simplified_type, :file_title
+
     scope :images, where("rich_rich_files.simplified_type = 'image'")
     scope :files, where("rich_rich_files.simplified_type = 'file'")
     
-    paginates_per Rich.options[:paginates_per]
+    paginates_per 34
     
     has_attached_file :rich_file,
                       :styles => Proc.new {|a| a.instance.set_styles },

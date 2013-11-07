@@ -486,7 +486,7 @@ qq.FileUploader = function(o){
                 
         template: '<div class="qq-uploader">' + 
                 '<div class="qq-upload-drop-area"><span>Drop files here to upload</span></div>' +
-                '<div class="qq-upload-button">Upload a file</div>' +
+                '<div class="qq-upload-button">Upload a file XXX</div>' +
                 '<ul class="qq-upload-list"></ul>' + 
              '</div>',
 
@@ -1195,6 +1195,7 @@ qq.extend(qq.UploadHandlerXhr.prototype, {
         // build query string
         params = params || {};
         params['qqfile'] = name;
+        params['file_title'] = $('#upload-title').val();
         var queryString = qq.obj2url(params, this._options.action);
 
         xhr.open("POST", queryString, true);

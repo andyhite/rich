@@ -9,7 +9,7 @@ module Rich
 
   # configure image styles
   def self.image_styles
-      @@image_styles.merge({ :rich_thumb => "100x100#" })
+      @@image_styles.merge({ :rich_thumb => "100x100#", :display_thumb => "200x200#", :display => "400x400#" })
   end
   def self.image_styles=(image_styles)
     @@image_styles = image_styles
@@ -77,9 +77,6 @@ module Rich
     :uiColor => '#f4f4f4'
   }
   # End configuration defaults
-
-  mattr_accessor :paginates_per
-  @@paginates_per = 34
   
   def self.options(overrides={}, scope_type=nil, scope_id=nil)
     # merge in editor settings configured elsewhere
@@ -99,8 +96,7 @@ module Rich
       :allow_embeds => self.allow_embeds,
       :placeholder_image => self.placeholder_image,
       :preview_size => self.preview_size,
-      :hidden_input => self.hidden_input,
-      :paginates_per => self.paginates_per
+      :hidden_input => self.hidden_input
     }
     editor_options = self.editor.merge(base)
     

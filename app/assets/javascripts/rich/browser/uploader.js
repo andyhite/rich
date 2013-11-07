@@ -6,13 +6,14 @@ rich.Uploader = function(){
 	
 	this._options = {
 		uploadButtonId: 'upload',
-		insertionPoint: 'uploadBlock',
+		insertionPoint: 'input-image-block', //'uploadBlock',
 		uploadType: $.QueryString["type"],
 		scoped: $.QueryString["scoped"],
 		scope_type: $.QueryString["scope_type"],
-		scope_id: $.QueryString["scope_id"]
+		scope_id: $.QueryString["scope_id"],
+    uploadTitleId: 'upload-title'
 	};
-	
+
 	// create the qq uploader
 	var self = this;
 	var uploader = new qq.FileUploaderBasic({
@@ -21,11 +22,12 @@ rich.Uploader = function(){
 		maxConnections: 3,
 		action: $("#new_rich_file").attr("action"),
 		params: { authenticity_token: $("input[name='authenticity_token']").attr("value"),
-		 	      simplified_type: this._options.uploadType,
+		 	    simplified_type: this._options.uploadType,
 				  scoped: this._options.scoped,
 				  scope_type: this._options.scope_type,
-				  scope_id: this._options.scope_id
-		},
+				  scope_id: this._options.scope_id,
+          image_title: this._options.uploadTitleId
+    },
 		debug: true,
 		onComplete: function(id, fileName, responseJSON) { self.uploadComplete(id, fileName, responseJSON); },
 		onSubmit: function(id, fileName) { self.uploadSubmit(id, fileName); },

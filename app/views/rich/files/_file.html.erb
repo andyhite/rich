@@ -4,8 +4,9 @@
         data-uris="<%= file.uri_cache %>"
         data-rich-asset-id="<%= file.id %>"
 				data-rich-asset-type="<%= file.simplified_type %>"
-				data-rich-asset-name="<%= file.rich_file_file_name %>"
+        data-rich-asset-name="<%= file.rich_file_file_name %>"
+        data-rich-asset-title="<%= file.file_title %>"
   />
-  <p><%= file.rich_file_file_name %></p>
-  <%= link_to "delete", "/rich/files/"+file.id.to_s, :method => :delete, :remote => true, :data => { :confirm => t(:delete_confirm) }, :class => "delete", :title => t(:delete) %>
+  <p><%= "#{file.file_title} - " if file.file_title.present? %><%= file.rich_file_file_name %></p>
+  <%= link_to "delete", "/rich/files/"+file.id.to_s, :method => :delete, :remote => true, :confirm => t(:delete_confirm), :class => "delete", :title => t(:delete) %>
 </li>

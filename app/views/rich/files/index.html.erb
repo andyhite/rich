@@ -1,7 +1,7 @@
 <header>
   
 	<div id="loading" style="display:none;"></div>
-
+  <!--
   <div id="view-toggle">
     <a href="#" id="view-grid" title="<%= t(:view_grid_tip) %>"><%= t(:view_grid) %></a>
     <a href="#" id="view-list" title="<%= t(:view_list_tip) %>"><%= t(:view_list) %></a>
@@ -11,6 +11,7 @@
     <a href="#" id="insert-many" title="<%= t(:insert_many_tip) %>"><%= t(:insert_many) %></a>
     <a href="#" id="insert-one" title="<%= t(:insert_one_tip) %>"><%= t(:insert_one) %></a>  
   </div>
+  -->
 
   <ul id="styles" class="scopes">
     <li class="label"><%= t(:available_styles) %></li>
@@ -25,13 +26,21 @@
 </div>
 
 <ul id="items">
-  
-  <li id="uploadBlock">
-    <div id="upload" class="qq-upload-button placeholder">
-      <div class="spinner"></div>
-    </div>
-    <p><%= t(:upload_a_file) %></p>
-  </li>
+  <li id="add-new-image" class="add-new-image"><a href="#" >Add new image</a></li>
+  <div id="input-image-block" class="form-add-image hide">
+    <img src="/assets/rich/x-red.png" class="pointer pull-right" id="close-add-image-form" alt="Cancel">
+    <li id="titleBlock">
+      <div class="image-title">Title</div>
+      <div><input type="text" id="upload-title" name="file-title" value=""></div>
+    </li>
+
+    <li id="uploadBlock">
+      <div id="upload" class="qq-upload-button placeholder">
+        <div class="spinner"></div>
+      </div>
+      <p><%= t(:upload_a_file) %></p>
+    </li>
+  </div>
 
 	<%= render :partial => "file", :collection => @items, :as => :file %>
 

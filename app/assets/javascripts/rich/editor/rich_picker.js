@@ -9,6 +9,7 @@ rich.AssetPicker.prototype = {
 	
 	showFinder: function(dom_id, options){
 		// open a popup
+    console.log(options.insert_many);
 		var params = {};
 		params.CKEditor = 'picker'; // this is not CKEditor
 		params.default_style = options.default_style;
