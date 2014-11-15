@@ -1,15 +1,15 @@
 // CKEditor plugin configuration
 
 function addQueryString( url, params ) {
-	var queryString = [];
-	if (!params) return url;
-	else {
-		for (var i in params) queryString.push(i + "=" + encodeURIComponent( params[i]));
-	}
-	return url + ( ( url.indexOf( "?" ) != -1 ) ? "&" : "?" ) + queryString.join( "&" );
+  var queryString = [];
+  if (!params) return url;
+  else {
+    for (var i in params) queryString.push(i + "=" + encodeURIComponent( params[i]));
+  }
+  return url + ( ( url.indexOf( "?" ) != -1 ) ? "&" : "?" ) + queryString.join( "&" );
 }
 
 // load external plugins
-CKEDITOR.plugins.addExternal('MediaEmbed', '<%= asset_path('ckeditor-contrib/plugins/MediaEmbed/') %>');
-CKEDITOR.plugins.addExternal('richfile', '<%= asset_path('ckeditor-contrib/plugins/richfile/') %>');
-CKEDITOR.plugins.addExternal('Glossary', '<%= asset_path('ckeditor-contrib/plugins/Glossary/') %>');
+CKEDITOR.plugins.addExternal('MediaEmbed', '../../../../../vendor/assets/ckeditor/ckeditor-contrib/plugins/MediaEmbed');
+CKEDITOR.plugins.addExternal('richfile',   '../../../../../vendor/assets/ckeditor/ckeditor-contrib/plugins/richfile/');
+CKEDITOR.plugins.addExternal('Glossary',   '../../../../../vendor/assets/ckeditor/ckeditor-contrib/plugins/Glossary/');
