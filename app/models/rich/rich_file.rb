@@ -7,8 +7,8 @@ module Rich
 
     attr_accessible :rich_file_file_name, :rich_file_content_type, :rich_file_file_size, :rich_file_updated_at, :owner_type, :owner_id, :uri_cache, :simplified_type, :file_title
 
-    scope :images, where("rich_rich_files.simplified_type = 'image'")
-    scope :files, where("rich_rich_files.simplified_type = 'file'")
+    scope :images, -> { where("rich_rich_files.simplified_type = 'image'") }
+    scope :files, -> { where("rich_rich_files.simplified_type = 'file'") }
     
     paginates_per 34
     
@@ -17,6 +17,7 @@ module Rich
                       :convert_options => Proc.new { |a| Rich.convert_options[a] }
     
     validates_attachment_presence :rich_file
+    validates_attachment :rich_file, content_type: { content_type: ["image/jpg", "image/jpeg", "image/png", "image/gif"] }
     validate :check_content_type
     validates_attachment_size :rich_file, :less_than=>15.megabyte, :message => "must be smaller than 15MB"
     
